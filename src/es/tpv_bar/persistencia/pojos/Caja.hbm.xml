@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-jun-2012 17:46:58 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="es.tpv_bar.persistencia.pojos.Caja" table="caja" >
+        <id name="idCaja" type="java.lang.Integer">
+            <column name="idCaja" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="camarero" class="es.tpv_bar.persistencia.pojos.Camarero" fetch="select">
+            <column name="IdCamarero" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cabezera" class="es.tpv_bar.persistencia.pojos.Cabezera" fetch="select">
+            <column name="IdCabezera" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="movimiento" type="double">
+            <column name="movimiento" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="saldo" type="double">
+            <column name="saldo" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="cajaPago" type="int">
+            <column name="cajaPago" not-null="true" />
+        </property>
+        <set name="arqueoses" inverse="true">
+            <key>
+                <column name="IdCaja" not-null="true" />
+            </key>
+            <one-to-many class="es.tpv_bar.persistencia.pojos.Arqueos" />
+        </set>
+    </class>
+</hibernate-mapping>

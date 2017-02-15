@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-jun-2012 17:46:58 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="es.tpv_bar.persistencia.pojos.Linea" table="linea" >
+        <id name="idLinea" type="java.lang.Integer">
+            <column name="IdLinea" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="productos" class="es.tpv_bar.persistencia.pojos.Productos" fetch="select">
+            <column name="IdProductos" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cabezera" class="es.tpv_bar.persistencia.pojos.Cabezera" fetch="select">
+            <column name="IdCabezera" />
+        </many-to-one>
+        <many-to-one name="ubicacion" class="es.tpv_bar.persistencia.pojos.Ubicacion" fetch="select">
+            <column name="IdUbicacion" not-null="true" />
+        </many-to-one>
+        <property name="precio" type="java.lang.Double">
+            <column name="Precio" precision="22" scale="0" />
+        </property>
+        <property name="catidad" type="java.lang.Double">
+            <column name="catidad" precision="22" scale="0" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="Total" precision="22" scale="0" />
+        </property>
+        <property name="cobrado" type="int">
+            <column name="cobrado" not-null="true" />
+        </property>
+        <property name="invitacion" type="boolean">
+            <column name="Invitacion" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
